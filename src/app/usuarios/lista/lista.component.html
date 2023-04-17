@@ -1,14 +1,43 @@
-<div class="row row-cols-1 row-cols-md-3 g-4">
-  <div class="col" *ngFor="let usuario of usuarios">
-    <div class="card">
-      <img [src]="usuario.avatar" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">{{usuario.first_name}} {{usuario.last_name}}</h5>
-        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
-        <p class="card-text"><span class="text-muted"> ID:{{usuario.id}}</span></p>
+<div *ngIf="!loading" class="row row-cols-1 row-cols-md-3 g-4">
+    <div class="col" *ngFor="let usuario of usuarios">
+      <div class="card">
+        <img [src]="usuario.avatar" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">{{usuario.first_name}} {{usuario.last_name}}</h5>
+          <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
+          <p class="card-text"><span class="text-muted"> ID:{{usuario.id}}</span></p>
 
+        </div>
       </div>
     </div>
+</div>
+
+
+
+
+
+<div *ngIf="loading" class="alert alert-primary" role="alert">
+  <div class="d-flex justify-content-center align-items-center flex-column">
+    <div class="preloader-wrapper big active">
+      <div class="spinner-layer spinner-blue-only">
+        <div class="circle-clipper left">
+          <div class="circle"></div>
+        </div><div class="gap-patch">
+          <div class="circle"></div>
+        </div><div class="circle-clipper right">
+          <div class="circle"></div>
+        </div>
+      </div>
+    </div>
+    <h4>Cargando Usuarios...</h4>
   </div>
+</div>
+
+<div *ngIf="error" class="alert alert-danger" role="alert">
+  <div class="d-flex justify-content-center align-items-center flex-column">
+
+
+    <h4>Error !</h4>
+    <div>{{error | json}}</div>
 
 </div>
